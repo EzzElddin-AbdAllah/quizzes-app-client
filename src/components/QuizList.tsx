@@ -1,76 +1,77 @@
 import React from "react";
 import {
-	Card,
-	CardContent,
-	Typography,
-	List,
-	ListItem,
-	Button,
-	Divider,
+  Card,
+  CardContent,
+  Typography,
+  List,
+  ListItem,
+  Button,
+  Divider,
 } from "@mui/material";
 
 const QuizList = () => {
-	return (
-		<Card
-			sx={{
-				width: "50%",
-				justifyContent: "flex-end",
-				alignItems: "flex-end",
-			}}
-		>
-			<CardContent>
-				{/* Title */}
-				<Typography variant="h5" component="div" gutterBottom>
-					What's Duo
-				</Typography>
+  const quizzes = [
+    {
+      quizName: "Quiz 1",
+      courseName: "Math",
+      topicName: "Algebra",
+      dueDate: "September 25, 2023",
+    },
+    {
+      quizName: "Quiz 2",
+      courseName: "Science",
+      topicName: "Biology",
+      dueDate: "September 28, 2023",
+    },
+    // Add more quizzes as needed
+  ];
 
-				{/* List of quizzes */}
-				<List>
-					{/* Quiz 1 */}
-					<ListItem>
-						<Typography variant="body1" color="textPrimary" gutterBottom>
-							Quiz Name: Quiz 1
-						</Typography>
-						<Typography variant="body2" color="textSecondary" gutterBottom>
-							Course: Math
-						</Typography>
-						<Typography variant="body2" color="textSecondary" gutterBottom>
-							Topic: Algebra
-						</Typography>
-						<Typography variant="body2" color="textSecondary" gutterBottom>
-							Due to: September 25, 2023
-						</Typography>
-						<Divider />
-						<Button variant="contained" color="primary">
-							Start Quiz
-						</Button>
-					</ListItem>
+  return (
+    <Card style={{ maxHeight: "300px", overflowY: "auto" }}>
+      <CardContent>
+        {/* Title */}
+        <Typography variant="h5" component="div" gutterBottom>
+          What's Duo
+        </Typography>
 
-					{/* Quiz 2 */}
-					<ListItem>
-						<Typography variant="body1" color="textPrimary" gutterBottom>
-							Quiz Name: Quiz 2
-						</Typography>
-						<Typography variant="body2" color="textSecondary" gutterBottom>
-							Course: Science
-						</Typography>
-						<Typography variant="body2" color="textSecondary" gutterBottom>
-							Topic: Biology
-						</Typography>
-						<Typography variant="body2" color="textSecondary" gutterBottom>
-							Due to: September 28, 2023
-						</Typography>
-						<Divider />
-						<Button variant="contained" color="primary">
-							Start Quiz
-						</Button>
-					</ListItem>
-
-					{/* Add more quizzes as needed */}
-				</List>
-			</CardContent>
-		</Card>
-	);
+        {/* List of quizzes */}
+        <List>
+          {quizzes.map((quiz, index) => (
+            <div key={index}>
+              <ListItem>
+                <Typography variant="body1" color="textPrimary">
+                  Quiz Name: {quiz.quizName}
+                </Typography>
+              </ListItem>
+              <ListItem>
+                <Typography variant="body2" color="textSecondary">
+                  Course: {quiz.courseName}
+                </Typography>
+              </ListItem>
+              <ListItem>
+                <Typography variant="body2" color="textSecondary">
+                  Topic: {quiz.topicName}
+                </Typography>
+              </ListItem>
+              <ListItem>
+                <Typography variant="body2" color="textSecondary">
+                  Due to: {quiz.dueDate}
+                </Typography>
+              </ListItem>
+              <Divider />
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ width: "100%", marginTop: "8px" }}
+              >
+                Start Quiz
+              </Button>
+            </div>
+          ))}
+        </List>
+      </CardContent>
+    </Card>
+  );
 };
 
 export default QuizList;

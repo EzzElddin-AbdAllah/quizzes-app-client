@@ -1,3 +1,4 @@
+import React from "react";
 import Grid from "@mui/material/Grid";
 import AnnouncementList from "../components/AnnouncementList";
 import Navbar from "../components/Navbar";
@@ -6,43 +7,44 @@ import Sidebar from "../components/Sidebar";
 import WelcomeCard from "../components/WelcomeCard";
 
 const DashboardPage = () => {
-	return (
-		<Grid container>
-			{/* Sidebar */}
-			<Grid item xs={2}>
-				<Sidebar />
-			</Grid>
+  return (
+    <Grid container spacing={2} sx={{ backgroundColor: "#f0f0f0", height: "100vh", overflow: "hidden" }}>
+      {/* Sidebar */}
+      <Grid item xs={2} sx={{ overflow: "hidden", marginTop: -1, marginLeft: -1 }}>
+        <Sidebar />
+      </Grid>
 
-			{/* Main content container */}
-			<Grid item xs={10} container direction="column">
-				{/* Navbar */}
-				<Grid item>
-					<Navbar />
-				</Grid>
+      <Grid container item direction="column" xs={10} spacing={2}>
+        {/* Navbar */}
+        <Grid item sx={{marginTop: -1}}>
+          <Navbar />
+        </Grid>
 
-				{/* Welcome Section */}
-				<Grid item container>
-					{/* Your content for the welcome section goes here */}
-					<WelcomeCard />
-				</Grid>
+        <Grid container item>
+          {/* Welcome Section */}
+          <Grid item xs>
+            {/* Your content for the welcome section goes here */}
+            <WelcomeCard />
+          </Grid>
+        </Grid>
 
-				{/* Announcements and Quizzes Sections */}
-				<Grid item container>
-					{/* Announcements Section */}
-					<Grid item xs={6}>
-						{/* Your content for the announcements section goes here */}
-						<AnnouncementList />
-					</Grid>
+        {/* Announcements and Quizzes Sections */}
+        <Grid container item spacing={2}>
+          {/* Announcements Section */}
+          <Grid item xs={8} >
+            {/* Your content for the announcements section goes here */}
+            <AnnouncementList />
+          </Grid>
 
-					{/* Quizzes Section */}
-					<Grid item xs={6}>
-						{/* Your content for the quizzes section goes here */}
-						<QuizList />
-					</Grid>
-				</Grid>
-			</Grid>
-		</Grid>
-	);
+          {/* Quizzes Section */}
+          <Grid item xs={4} sx={{ width: "100%"  }}>
+            {/* Your content for the quizzes section goes here */}
+            <QuizList />
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 };
 
 export default DashboardPage;
