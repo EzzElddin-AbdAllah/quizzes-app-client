@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import requireAuth from "./components/requireAuth";
 import DashboardPage from "./pages/DashboardPage";
+import HomePage from "./pages/HomePage";
+
+const AuthenticatedDashboard = requireAuth(DashboardPage);
 
 const router = createBrowserRouter([
 	{
@@ -9,7 +12,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/dashboard",
-		element: <DashboardPage />,
+		element: <AuthenticatedDashboard />,
 	},
 ]);
 
